@@ -1,0 +1,40 @@
+data<- read.csv('HR_comma_sep (2).csv')
+
+#exploring the dataset
+dim(data)
+tail(data)
+head(data)
+
+#standardize the dataset
+data_standardize <- as.data.frame(scale(data[1:8]))
+data_standardize
+
+#Matrix correlation
+data.mat <- as.matrix(data_standardize)
+cov.mat <- cor(data_standardize)
+
+# cor of the dataset
+cor(data[1:8])
+
+#standaardization continues
+head(data_standardize)
+
+
+# covariance
+data.mat<- as.matrix(data_standardize)
+
+data.mat
+
+cov.mat <- cor(data_standardize)
+cov.mat
+
+
+#pca
+
+pca<- prcomp(data_standardize,center = T,scale.= T)
+summary(pca)
+
+library(ggfortify)
+# code to plot
+
+autoplot(pca, data = iris, colour = 'Salary')
